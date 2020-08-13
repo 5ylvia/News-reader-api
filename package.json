@@ -1,0 +1,22 @@
+{
+  "name": "news-api",
+  "version": "1.0.0",
+  "description": "Backend for news reader demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5ylvia/News-reader-api.git"
+  },
+  "author": "Sylvia Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/5ylvia/News-reader-api/issues"
+  },
+  "homepage": "https://github.com/5ylvia/News-reader-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
