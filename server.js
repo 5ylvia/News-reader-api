@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-app.use(cors());
 
+app.use(cors());
+app.use(express.json());
 
 const data = [
     {
@@ -68,10 +69,41 @@ app.get("/articles", (req, res) => {
     res.send({ articles : data });
 });
 
-app.get("/articles/:id", (req, res) => {
-    console.log(req.params.id);
-    res.send({ article: data });
+
+
+app.post("/articles", (req, res) => {
+  res.send(req.body);
 });
+
+app.get("/articles/:id", (req, res) => {
+    const id = req.params.id;
+
+    for (const article of data) {
+      if (article.id === id) {
+        res.send( {article: article} );
+      }
+    }
+});
+
+app.put("/articles/:id", (req, res) => {
+  const id = req.params.id;
+
+  for (const article of data) {
+    if (article.id === id) {
+      if (req.body.title) {
+        article.title = req.body.title;
+      }
+      if (req.body.description) {
+        article.description = req.body.description;
+      }
+      if (req.body.body) {
+        article.body = req.body.body;
+      }
+    }
+  }
+  res.end();
+});
+
 
 app.listen(3000, () => {
     console.log("Listening on port 3000...")
